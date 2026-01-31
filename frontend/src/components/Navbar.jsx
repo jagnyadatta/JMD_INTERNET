@@ -14,11 +14,11 @@ const Navbar = () => {
   ];
 
   const handleCall = () => {
-    window.location.href = 'tel:+911234567890';
+    window.location.href = 'tel:+919556397222';
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/911234567890?text=Hello%20JMD%20INTERNET,%20I%20need%20assistance', '_blank');
+    window.open('https://wa.me/919556397222?text=Hello%20JMD%20INTERNET,%20I%20need%20assistance', '_blank');
   };
 
   return (

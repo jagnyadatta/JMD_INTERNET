@@ -9,8 +9,8 @@ const ServiceModal = ({ service, onClose }) => {
   const [uploading, setUploading] = useState(false);
 
   const handleWhatsApp = () => {
-    const message = `Hello JMD INTERNET, I'm interested in ${service.title} service. Please guide me through the process.`;
-    const url = `https://wa.me/911234567890?text=${encodeURIComponent(message)}`;
+    const message = `Hello JMD INTERNET, I want to apply ${service.title} service.`;
+    const url = `https://wa.me/919556397222?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
@@ -104,7 +104,7 @@ const ServiceModal = ({ service, onClose }) => {
                 </ul>
 
                 {/* File Upload */}
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Upload Required Documents
                   </label>
@@ -126,18 +126,18 @@ const ServiceModal = ({ service, onClose }) => {
                       </span>
                     )}
                   </div>
-                </div>
+                </div> */}
 
                 {/* Action Buttons */}
                 <div className="space-y-4">
-                  <button
+                  {/* <button
                     onClick={handleFileUpload}
                     disabled={uploading}
                     className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary-green to-primary-blue text-white rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all disabled:opacity-50"
                   >
                     <FaUpload className="mr-3" />
                     {uploading ? 'Uploading...' : 'Upload & Submit Documents'}
-                  </button>
+                  </button> */}
 
                   <button
                     onClick={handleWhatsApp}

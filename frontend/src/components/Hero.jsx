@@ -7,7 +7,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative h-auto sm:h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-10">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0  z-10" />
@@ -57,13 +57,13 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="hidden sm:flex absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="hidden sm:flex absolute bottom-2 right-10 transform -translate-x-1/2 animate-bounce">
         <button
           onClick={scrollToServices}
           className="p-2 rounded-full bg-glass-white backdrop-blur-lg shadow-lg hover:bg-primary-green hover:text-white transition-colors"
           aria-label="Scroll to services"
         >
-          <FaArrowRight className="rotate-90" size={20} />
+          <FaArrowRight className="rotate-90" size={30} />
         </button>
       </div>
     </section>

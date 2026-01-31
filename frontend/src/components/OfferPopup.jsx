@@ -2,22 +2,37 @@ import React, { useState } from 'react';
 import { FaTimes, FaWhatsapp, FaGift } from 'react-icons/fa';
 
 const OfferPopup = ({ onClose }) => {
+  console.log('OfferPopup component rendered');
   const [offer, setOffer] = useState({
     title: 'Special Festival Offer!',
-    description: 'Get 20% discount on all certificate services this month. Limited time offer!',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    description: 'Get 10% discount on all certificate services this month. Limited time offer!',
+    image: 'https://res.cloudinary.com/dv3ttkcwa/image/upload/v1769881182/Gemini_Generated_Image_wdls8gwdls8gwdls_dfqgrp.png',
     whatsappMessage: 'Hello! I want to avail the festival offer on certificate services.'
   });
 
   const handleWhatsApp = () => {
-    const url = `https://wa.me/911234567890?text=${encodeURIComponent(offer.whatsappMessage)}`;
+    const url = `https://wa.me/919556397222?text=${encodeURIComponent(offer.whatsappMessage)}`;
     window.open(url, '_blank');
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-      <div className="relative max-w-md w-full bg-gradient-to-br from-white via-gray-50 to-blue-50 backdrop-blur-lg rounded-3xl shadow-2xl animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '1rem',
+        zIndex: 50
+      }}
+    >
+      <div className="relative border border-black max-w-md w-full bg-gradient-to-br from-white via-gray-50 to-blue-50 backdrop-blur-lg rounded-3xl shadow-2xl animate-scale-in">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -27,11 +42,11 @@ const OfferPopup = ({ onClose }) => {
         </button>
 
         {/* Offer Badge */}
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+        {/* <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
           <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 shadow-lg">
             <FaGift className="text-white text-2xl" />
           </div>
-        </div>
+        </div> */}
 
         <div className="pt-12 pb-6 px-6">
           {/* Offer Image */}
@@ -49,7 +64,7 @@ const OfferPopup = ({ onClose }) => {
             <p className="text-gray-600 mb-4">{offer.description}</p>
             
             <div className="inline-block px-4 py-2 bg-gradient-to-r from-red-100 to-yellow-100 rounded-full">
-              <span className="text-red-600 font-bold text-lg">20% OFF</span>
+              <span className="text-red-600 font-bold text-lg">10% OFF</span>
               <span className="text-gray-600 ml-2">on all services</span>
             </div>
           </div>

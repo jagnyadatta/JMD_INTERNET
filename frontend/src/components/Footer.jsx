@@ -107,7 +107,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="flex item-center justify-between pt-8 border-t border-gray-700 text-center">
+        <div className="flex flex-wrap gap-3 item-center justify-center sm:justify-between pt-8 border-t border-gray-700 text-center">
           <p className="text-gray-400">
             © 2026 JMD INTERNET - Common Service Centre. All rights reserved.
           </p>

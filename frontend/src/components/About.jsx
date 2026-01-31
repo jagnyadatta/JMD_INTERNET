@@ -59,7 +59,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-6 mt-8">
               {[
                 { value: '10+', label: 'Years Experience' },
-                { value: '50K+', label: 'Happy Customers' },
+                { value: '15K+', label: 'Happy Customers' },
                 { value: '100+', label: 'Services Offered' },
                 { value: '24/7', label: 'Support Available' },
               ].map((stat, index) => (

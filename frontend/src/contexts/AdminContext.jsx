@@ -9,6 +9,8 @@ export const AdminProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (token) {
@@ -20,7 +22,7 @@ export const AdminProvider = ({ children }) => {
 
   const validateToken = async (token) => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/profile', {
+      const response = await axios.get(`${BASE_URL}/admin/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAdmin(response.data.data);
@@ -33,7 +35,7 @@ export const AdminProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/login', {
+      const response = await axios.post(`${BASE_URL}/admin/login`, {
         email,
         password
       });

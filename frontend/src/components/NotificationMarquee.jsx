@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaWhatsapp, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const NotificationMarquee = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ const NotificationMarquee = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/notifications/active');
+      const response = await axios.get(`${BASE_URL}/notifications/active`);
       if (response.data.data.length > 0) {
         setNotifications(response.data.data);
         setCurrentNotification(response.data.data[0]); // Show first/highest priority

@@ -8,6 +8,8 @@ const ServiceModal = ({ service, onClose }) => {
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const handleWhatsApp = () => {
     const message = `Hello JMD INTERNET, I want to apply ${service.title} service.`;
     const url = `https://wa.me/919556397222?text=${encodeURIComponent(message)}`;
@@ -28,7 +30,7 @@ const ServiceModal = ({ service, onClose }) => {
       });
       formData.append('serviceId', service.id);
 
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post(`${BASE_URL}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 

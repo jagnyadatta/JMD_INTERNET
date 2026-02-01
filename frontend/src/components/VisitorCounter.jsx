@@ -6,6 +6,8 @@ const VisitorCounter = () => {
   const [visitorCount, setVisitorCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   useEffect(() => {
     // Check if already visited in this session
     const hasVisited = sessionStorage.getItem('hasVisitedJMD');
@@ -22,7 +24,7 @@ const VisitorCounter = () => {
 
   const incrementVisitor = async () => {
     try {
-      await axios.post('http://localhost:5000/api/visitor/increment');
+      await axios.post(`${BASE_URL}/visitor/increment`);
     } catch (error) {
       console.error('Failed to increment visitor:', error);
     }
@@ -30,7 +32,7 @@ const VisitorCounter = () => {
 
   const fetchVisitorCount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/visitor/count');
+      const response = await axios.get(`${BASE_URL}/visitor/count`);
       setVisitorCount(response.data.count);
     } catch (error) {
       console.error('Failed to fetch visitor count:', error);

@@ -11,12 +11,14 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post(`${BASE_URL}/contact`, formData);
       toast.success('Message sent successfully! We will contact you soon.');
       setFormData({ name: '', phone: '', message: '' });
     } catch (error) {

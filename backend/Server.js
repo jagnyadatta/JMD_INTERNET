@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
-import axios from 'axios';
 // import mongoSanitize from 'express-mongo-sanitize';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -87,7 +86,7 @@ app.use((err, req, res, next) => {
 
 setInterval(async () => {
   try {
-    const res = await axios.get(KEEP_ALIVE_URL);
+    const res = await fetch(KEEP_ALIVE_URL);
     console.log('🔁 Keep-alive ping:', res.status, new Date().toISOString());
   } catch (err) {
     console.error('❌ Keep-alive failed:', err.message);

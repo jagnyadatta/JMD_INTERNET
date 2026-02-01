@@ -1,16 +1,18 @@
 import Offer from '../models/Offer.js';
 import cloudinary from '../config/cloudinary.js';
 
+
 // Get active offers
 export const getActiveOffers = async (req, res) => {
   try {
     const offers = await Offer.find({
       isActive: true,
+      showOnPopup: true,
       validFrom: { $lte: new Date() },
       validUntil: { $gte: new Date() }
     })
     .sort({ validUntil: 1 })
-    .populate('services', 'title icon');
+    .limit(1); // Get only one for popup
     
     res.status(200).json({
       success: true,

@@ -39,3 +39,91 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-green-600;
 }
+
+/* Add these animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s infinite;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* For the first component */
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Notification styles */
+.notification-priority-1 {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+
+.notification-priority-2 {
+  background: linear-gradient(to right, #f59e0b, #d97706);
+}
+
+.notification-priority-3 {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+}
+
+/* Glass effect for buttons */
+.glass-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

@@ -1,4 +1,3 @@
-// src/components/admin/AdminDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { 
   FaUsers, 
@@ -6,7 +5,8 @@ import {
   FaGift,
   FaChartLine,
   FaArrowUp,
-  FaArrowDown
+  FaArrowDown,
+  FaBullhorn 
 } from 'react-icons/fa';
 import { GrServices } from "react-icons/gr";
 import AdminHeader from './AdminHeader';
@@ -18,7 +18,8 @@ const AdminDashboard = () => {
     services: { total: 0, active: 0 },
     contacts: { total: 0, new: 0 },
     uploads: { total: 0, pending: 0 },
-    offers: { total: 0, active: 0 }
+    offers: { total: 0, active: 0 },
+    notifications: { total: 0, active: 0 } 
   });
   const [recentActivity, setRecentActivity] = useState({
     contacts: [],
@@ -33,7 +34,7 @@ const AdminDashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const data = await adminApi.getDashboardStats();
-      setStats(data.stats);
+      setStats(data.data.stats);
       setRecentActivity(data.recentActivity);
     } catch (error) {
       toast.error('Failed to fetch dashboard data');
@@ -59,13 +60,21 @@ const AdminDashboard = () => {
       trend: '+8%',
       trendUp: true
     },
+    // {
+    //   title: 'Pending Uploads',
+    //   value: stats?.uploads?.pending,
+    //   icon: FaUpload,
+    //   color: 'red',
+    //   trend: '-3%',
+    //   trendUp: false
+    // },
     {
-      title: 'Pending Uploads',
-      value: stats.uploads.pending,
-      icon: FaUpload,
-      color: 'red',
-      trend: '-3%',
-      trendUp: false
+      title: 'Active Notifications',
+      value: stats?.notifications?.active || 0, // Add this
+      icon: FaBullhorn,
+      color: 'purple',
+      trend: '+5%',
+      trendUp: true
     },
     {
       title: 'Active Offers',
@@ -143,10 +152,10 @@ const AdminDashboard = () => {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-glass-white backdrop-blur-lg rounded-2xl p-6 shadow-lg">
+        {/* <div className="bg-glass-white backdrop-blur-lg rounded-2xl p-6 shadow-lg">
           <h3 className="text-xl font-bold text-gray-800 mb-6">Recent Activity</h3>
           <div className="space-y-4">
-            {recentActivity.contacts.slice(0, 4).map((contact, index) => (
+            {recentActivity?.contacts.slice(0, 4).map((contact, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
                   <p className="font-semibold">{contact.name}</p>
@@ -161,7 +170,7 @@ const AdminDashboard = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

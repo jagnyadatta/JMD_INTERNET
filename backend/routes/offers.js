@@ -12,8 +12,8 @@ import { uploadSingle } from '../middleware/upload.js';
 const router = express.Router();
 
 // Public routes
-router.get('/', getActiveOffers);
-router.post('/:id/track-click', trackOfferClick);
+router.get('/active', getActiveOffers); // For popup
+router.post('/:id/track-click', trackOfferClick); // Track clicks
 
 // Protected routes (Admin only)
 router.post('/', auth, role('admin', 'superadmin'), uploadSingle, createOffer);

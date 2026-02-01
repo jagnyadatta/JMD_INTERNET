@@ -282,7 +282,7 @@ const OfferModal = ({ offer, onClose, onSuccess }) => {
                   name="showOnPopup"
                   checked={formData.showOnPopup}
                   onChange={handleInputChange}
-                  className="h-5 w-5 text-primary-green rounded focus:ring-primary-green"
+                  className="h-5 w-5 text-green-500 rounded focus:ring-green-500"
                 />
                 <label htmlFor="showOnPopup" className="ml-2 text-sm text-gray-700">
                   Show as popup on website (after 10 seconds)

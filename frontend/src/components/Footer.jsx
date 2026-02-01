@@ -4,9 +4,9 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaPhone, FaWhatsapp, FaE
 const Footer = () => {
   const socialLinks = [
     { icon: FaFacebook, href: '#', color: 'hover:text-blue-600' },
-    { icon: FaTwitter, href: '#', color: 'hover:text-blue-400' },
+    { icon: FaTwitter, href: 'https://x.com/jmdnet2020', color: 'hover:text-blue-400' },
     { icon: FaInstagram, href: '#', color: 'hover:text-pink-600' },
-    { icon: FaYoutube, href: '#', color: 'hover:text-red-600' },
+    { icon: FaYoutube, href: 'https://www.youtube.com/@jmdnet', color: 'hover:text-red-600' },
   ];
 
   const quickLinks = [

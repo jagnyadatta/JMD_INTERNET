@@ -61,8 +61,15 @@ export const adminApi = {
   getUploadStats: () => api.get('/upload/stats'),
   updateUploadStatus: (id, data) => api.put(`/upload/${id}/status`, data),
 
+  // Notifications
+  getAllNotifications: () => api.get('/notifications'),
+  getActiveNotifications: () => api.get('/notifications/active'),
+  createNotification: (data) => api.post('/notifications', data),
+  updateNotification: (id, data) => api.put(`/notifications/${id}`, data),
+  deleteNotification: (id) => api.delete(`/notifications/${id}`),
+
   // Offers
-  getOffers: () => api.get('/offers'),
+  getOffers: () => api.get('/offers/active'),
   createOffer: (data) => api.post('/offers', data),
   updateOffer: (id, data) => api.put(`/offers/${id}`, data),
   deleteOffer: (id) => api.delete(`/offers/${id}`),

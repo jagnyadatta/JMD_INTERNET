@@ -13,6 +13,8 @@ import contactRoutes from './routes/contact.js';
 import uploadRoutes from './routes/upload.js';
 import adminRoutes from './routes/admin.js';
 import offerRoutes from './routes/offers.js';
+import visitorRoutes from './routes/visitor.js';
+import notificationRoutes from './routes/notification.js';
 
 dotenv.config();
 
@@ -58,6 +60,8 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/offers', offerRoutes);
+app.use('/api/visitor', visitorRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // Health Check
 app.get('/api/health', (req, res) => {

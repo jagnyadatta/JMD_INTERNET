@@ -57,7 +57,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="hidden sm:flex absolute bottom-2 right-10 transform -translate-x-1/2 animate-bounce">
+      <div className="hidden sm:flex absolute bottom-12 right-10 transform -translate-x-1/2 animate-bounce">
         <button
           onClick={scrollToServices}
           className="p-2 rounded-full bg-glass-white backdrop-blur-lg shadow-lg hover:bg-primary-green hover:text-white transition-colors"

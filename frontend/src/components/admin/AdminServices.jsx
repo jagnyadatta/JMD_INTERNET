@@ -20,7 +20,7 @@ const AdminServices = () => {
   const fetchServices = async () => {
     try {
       const data = await adminApi.getServices();
-      setServices(data);
+      setServices(data.data);
     } catch (error) {
       toast.error('Failed to fetch services');
     } finally {

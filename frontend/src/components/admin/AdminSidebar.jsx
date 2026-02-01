@@ -7,7 +7,8 @@ import {
   FaSignOutAlt,
   FaChartBar,
   FaCog,
-  FaHome
+  FaHome,
+  FaBullhorn
 } from 'react-icons/fa';
 import { MdDashboard } from "react-icons/md";
 import { GrServices } from "react-icons/gr";
@@ -23,9 +24,10 @@ const AdminSidebar = () => {
     { id: 'dashboard', label: 'Dashboard', icon: MdDashboard, path: '/admin' },
     { id: 'services', label: 'Services', icon: GrServices, path: '/admin/services' },
     { id: 'contacts', label: 'Contacts', icon: FaUsers, path: '/admin/contacts' },
-    { id: 'uploads', label: 'Uploads', icon: FaUpload, path: '/admin/uploads' },
+    { id: 'notifications', label: 'Notifications', icon: FaBullhorn, path: '/admin/notifications' },
+    // { id: 'uploads', label: 'Uploads', icon: FaUpload, path: '/admin/uploads' },
     { id: 'offers', label: 'Offers', icon: FaGift, path: '/admin/offers' },
-    { id: 'analytics', label: 'Analytics', icon: FaChartBar, path: '/admin/analytics' },
+    // { id: 'analytics', label: 'Analytics', icon: FaChartBar, path: '/admin/analytics' },
     { id: 'settings', label: 'Settings', icon: FaCog, path: '/admin/settings' },
   ];
 
@@ -64,15 +66,7 @@ const AdminSidebar = () => {
         </nav>
         
         {/* Footer Actions */}
-        <div className="absolute bottom-6 left-6 right-6 space-y-3">
-          <button
-            onClick={() => window.open('/', '_blank')}
-            className="w-full flex items-center px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-100 transition-all"
-          >
-            <FaHome className="mr-3" />
-            Visit Website
-          </button>
-          
+        <div className="absolute bottom-6 left-6 right-6 space-y-3">          
           <button
             onClick={logout}
             className="w-full flex items-center px-4 py-3 rounded-xl text-red-600 hover:bg-red-50 transition-all"

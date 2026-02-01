@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaTimes, FaWhatsapp, FaGift } from 'react-icons/fa';
 
 const OfferPopup = ({ onClose }) => {
-  console.log('OfferPopup component rendered');
   const [offer, setOffer] = useState({
     title: 'Special Festival Offer!',
     description: 'Get 10% discount on all certificate services this month. Limited time offer!',
@@ -40,13 +39,6 @@ const OfferPopup = ({ onClose }) => {
         >
           <FaTimes size={20} />
         </button>
-
-        {/* Offer Badge */}
-        {/* <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-yellow-500 shadow-lg">
-            <FaGift className="text-white text-2xl" />
-          </div>
-        </div> */}
 
         <div className="pt-12 pb-6 px-6">
           {/* Offer Image */}

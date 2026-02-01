@@ -1,6 +1,11 @@
 import Admin from '../models/Admin.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import Service from '../models/Service.js';
+import Contact from '../models/Contact.js';
+import Upload from '../models/Upload.js';
+import Offer from '../models/Offer.js';
+import Notification from '../models/Notification.js';
 
 // Admin registration (for initial setup only)
 export const adminRegister = async (req, res) => {
@@ -227,7 +232,9 @@ export const getDashboardStats = async (req, res) => {
       totalUploads,
       pendingUploads,
       totalOffers,
-      activeOffers
+      activeOffers,
+      totalNotifications,
+      activeNotifications  // Add this
     ] = await Promise.all([
       Service.countDocuments(),
       Service.countDocuments({ isActive: true }),
@@ -240,6 +247,12 @@ export const getDashboardStats = async (req, res) => {
         isActive: true,
         validFrom: { $lte: new Date() },
         validUntil: { $gte: new Date() }
+      }),
+      Notification.countDocuments(),  // Add this
+      Notification.countDocuments({ 
+        isActive: true,
+        startDate: { $lte: new Date() },
+        endDate: { $gte: new Date() }
       })
     ]);
     
@@ -262,7 +275,8 @@ export const getDashboardStats = async (req, res) => {
           services: { total: totalServices, active: activeServices },
           contacts: { total: totalContacts, new: newContacts },
           uploads: { total: totalUploads, pending: pendingUploads },
-          offers: { total: totalOffers, active: activeOffers }
+          offers: { total: totalOffers, active: activeOffers },
+          notifications: { total: totalNotifications, active: activeNotifications }
         },
         recentActivity: {
           contacts: recentContacts,

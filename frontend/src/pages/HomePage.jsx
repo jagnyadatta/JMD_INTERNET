@@ -9,6 +9,9 @@ import Footer from '../components/Footer';
 import ServiceModal from '../components/ServiceModal';
 import OfferPopup from '../components/OfferPopup';
 import { servicesData } from '../data/services';
+import VisitorCounter from '../components/VisitorCounter';
+import NotificationMarquee from '../components/NotificationMarquee';
+import SimpleNotificationMarquee from '../components/SimpleNotificationMarquee';
 
 const HomePage = () => {
   const [selectedService, setSelectedService] = useState(null);
@@ -29,11 +32,14 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
+      {/* <NotificationMarquee/> */}
+      <SimpleNotificationMarquee/>
       <Hero />
       <Services services={servicesData} onServiceClick={setSelectedService} />
       <About />
       <Contact />
       <Footer />
+      <VisitorCounter/>
       
       {selectedService && (
         <ServiceModal 

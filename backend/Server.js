@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
+import axios from 'axios';
 // import mongoSanitize from 'express-mongo-sanitize';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -22,6 +23,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+const KEEP_ALIVE_URL = 'https://jmd-internet.onrender.com/api/health';
 
 // Security Middleware
 app.use(helmet({
@@ -81,6 +84,15 @@ app.use((err, req, res, next) => {
     error: process.env.NODE_ENV === 'development' ? err : {}
   });
 });
+
+setInterval(async () => {
+  try {
+    const res = await axios.get(KEEP_ALIVE_URL);
+    console.log('🔁 Keep-alive ping:', res.status, new Date().toISOString());
+  } catch (err) {
+    console.error('❌ Keep-alive failed:', err.message);
+  }
+}, 14 * 60 * 1000); // 14 minutes
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

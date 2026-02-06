@@ -12,7 +12,7 @@ const WhatsAppJoinWidget = () => {
   };
 
   return (
-    <div className="fixed bottom-3 right-3 z-50">
+    <div className="fixed bottom-20 right-3 z-50">
       {/* WhatsApp Icon Button */}
       <button
         onClick={handleClick}

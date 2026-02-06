@@ -12,6 +12,7 @@ import { servicesData } from '../data/services';
 import VisitorCounter from '../components/VisitorCounter';
 import NotificationMarquee from '../components/NotificationMarquee';
 import SimpleNotificationMarquee from '../components/SimpleNotificationMarquee';
+import WhatsAppJoinWidget from '../components/WhatsAppJoinWidget';
 
 const HomePage = () => {
   const [selectedService, setSelectedService] = useState(null);
@@ -40,6 +41,7 @@ const HomePage = () => {
       <Contact />
       <Footer />
       <VisitorCounter/>
+      <WhatsAppJoinWidget/>
       
       {selectedService && (
         <ServiceModal 

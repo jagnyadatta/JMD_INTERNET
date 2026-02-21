@@ -1,7 +1,7 @@
 // src/utils/adminApi.js
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_BASE_URL;;
+const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Create axios instance
 const api = axios.create({
@@ -74,6 +74,24 @@ export const adminApi = {
   updateOffer: (id, data) => api.put(`/offers/${id}`, data),
   deleteOffer: (id) => api.delete(`/offers/${id}`),
   getOfferAnalytics: () => api.get('/offers/analytics'),
+
+  // Records - New methods
+  getRecords: (params = {}) => {
+    const { page = 1, limit = 10, search = '' } = params;
+    return api.get(`/records?page=${page}&limit=${limit}&search=${search}`);
+  },
+  getRecordById: (id) => api.get(`/records/${id}`),
+  createRecord: (data) => api.post('/records', data),
+  updateRecord: (id, data) => api.put(`/records/${id}`, data),
+  deleteRecord: (id) => api.delete(`/records/${id}`),
+  searchRecords: (query) => api.get(`/records/search/${query}`),
+  
+  // Work History methods
+  addWorkHistory: (recordId, data) => api.post(`/records/${recordId}/history`, data),
+  updateWorkHistory: (recordId, historyId, data) => 
+    api.put(`/records/${recordId}/history/${historyId}`, data),
+  deleteWorkHistory: (recordId, historyId) => 
+    api.delete(`/records/${recordId}/history/${historyId}`),
 };
 
 export default api;

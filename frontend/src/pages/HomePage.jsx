@@ -10,7 +10,6 @@ import ServiceModal from '../components/ServiceModal';
 import OfferPopup from '../components/OfferPopup';
 import { servicesData } from '../data/services';
 import VisitorCounter from '../components/VisitorCounter';
-import NotificationMarquee from '../components/NotificationMarquee';
 import SimpleNotificationMarquee from '../components/SimpleNotificationMarquee';
 import WhatsAppJoinWidget from '../components/WhatsAppJoinWidget';
 

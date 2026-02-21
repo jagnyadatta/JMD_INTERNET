@@ -8,6 +8,7 @@ import AdminNotifications from './admin/AdminNotifications'; // Add this import
 import AdminContacts from './admin/AdminContacts';
 import AdminUploads from './admin/AdminUploads';
 import AdminOffers from './admin/AdminOffers';
+import AdminRecords from './admin/AdminRecords';
 
 const AdminPanel = () => {
   return (
@@ -23,6 +24,7 @@ const AdminPanel = () => {
           <Route path="/contacts" element={<AdminContacts />} />
           <Route path="/uploads" element={<AdminUploads />} />
           <Route path="/offers" element={<AdminOffers />} />
+          <Route path="/records" element={<AdminRecords />} />
           <Route path="*" element={<Navigate to="/admin" />} />
         </Routes>
       </div>

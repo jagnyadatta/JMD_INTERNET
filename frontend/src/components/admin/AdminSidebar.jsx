@@ -8,7 +8,8 @@ import {
   FaChartBar,
   FaCog,
   FaHome,
-  FaBullhorn
+  FaBullhorn,
+  FaClipboardList
 } from 'react-icons/fa';
 import { MdDashboard } from "react-icons/md";
 import { GrServices } from "react-icons/gr";
@@ -22,6 +23,7 @@ const AdminSidebar = () => {
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: MdDashboard, path: '/admin' },
+    { id: 'records', label: 'Records', icon: FaClipboardList, path: '/admin/records' }, 
     { id: 'services', label: 'Services', icon: GrServices, path: '/admin/services' },
     { id: 'contacts', label: 'Contacts', icon: FaUsers, path: '/admin/contacts' },
     { id: 'notifications', label: 'Notifications', icon: FaBullhorn, path: '/admin/notifications' },

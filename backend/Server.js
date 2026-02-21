@@ -15,6 +15,7 @@ import adminRoutes from './routes/admin.js';
 import offerRoutes from './routes/offers.js';
 import visitorRoutes from './routes/visitor.js';
 import notificationRoutes from './routes/notification.js';
+import recordRoutes from './routes/records.js';
 
 dotenv.config();
 
@@ -63,6 +64,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/offers', offerRoutes);
 app.use('/api/visitor', visitorRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/records', recordRoutes);
 
 // Health Check
 app.get('/api/health', (req, res) => {

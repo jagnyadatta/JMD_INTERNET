@@ -338,14 +338,14 @@ const AdminDashboard = () => {
                       </div>
                     )}
                     
-                    <div className="mt-3 flex justify-end">
+                    {/* <div className="mt-3 flex justify-end">
                       <button
                         onClick={() => window.location.href = `/admin/records/${followUp.recordId}`}
                         className="text-primary-green hover:text-primary-green-dark text-sm font-medium"
                       >
                         View Record →
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 ))
               ) : (

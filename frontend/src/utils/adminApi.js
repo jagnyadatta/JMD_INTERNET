@@ -80,6 +80,10 @@ export const adminApi = {
     const { page = 1, limit = 10, search = '' } = params;
     return api.get(`/records?page=${page}&limit=${limit}&search=${search}`);
   },
+  getRecordsFollowUp: async () => {
+    const response = await api.get('/records/dash');
+    return response.data;
+  },
   getRecordById: (id) => api.get(`/records/${id}`),
   createRecord: (data) => api.post('/records', data),
   updateRecord: (id, data) => api.put(`/records/${id}`, data),

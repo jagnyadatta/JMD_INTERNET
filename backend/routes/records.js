@@ -8,7 +8,8 @@ import {
   addWorkHistory,
   updateWorkHistory,
   deleteWorkHistory,
-  searchRecords
+  searchRecords,
+  getRecordsDash
 } from '../controllers/recordController.js';
 import { auth, role } from '../middleware/auth.js';
 
@@ -24,6 +25,7 @@ router.get('/search/:query', searchRecords);
 router.route('/')
   .get(getRecords)
   .post(createRecord);
+router.route('/dash').get(getRecordsDash);
 
 router.route('/:id')
   .get(getRecordById)

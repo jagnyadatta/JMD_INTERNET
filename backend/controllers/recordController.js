@@ -42,6 +42,24 @@ export const getRecords = async (req, res) => {
   }
 };
 
+// @desc    Get all records with pagination and search
+// @route   GET /api/records/dash
+// @access  Private/Admin
+export const getRecordsDash = async (req, res) => {
+  try {
+    const records = await Record.find({});
+    res.json({
+      success: true,
+      data:records,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
 // @desc    Get single record by id
 // @route   GET /api/records/:id
 // @access  Private/Admin
@@ -195,7 +213,7 @@ export const addWorkHistory = async (req, res) => {
       service,
       refNo,
       date: date || new Date(),
-      followUp,
+      followUp: followUp ? new Date(followUp) : null,
       remark
     });
 
@@ -241,7 +259,7 @@ export const updateWorkHistory = async (req, res) => {
     historyItem.service = service || historyItem.service;
     historyItem.refNo = refNo || historyItem.refNo;
     historyItem.date = date || historyItem.date;
-    historyItem.followUp = followUp || historyItem.followUp;
+    historyItem.followUp = followUp ? new Date(followUp) : historyItem.followUp;
     historyItem.remark = remark || historyItem.remark;
 
     await record.save();

@@ -47,7 +47,7 @@ const SimpleNotificationMarquee = () => {
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
           style={{
-            animation: 'marqueeScroll 40s linear infinite',
+            animation: 'marqueeScroll 80s linear infinite',
             animationPlayState: isPaused ? 'paused' : 'running'
           }}
         >

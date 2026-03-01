@@ -14,7 +14,7 @@ const recordSchema = new mongoose.Schema({
             service: String,
             refNo: String,
             date: Date,
-            followUp: String,
+            followUp: Date,
             remark: String
         }
     ]

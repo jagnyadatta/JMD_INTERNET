@@ -116,6 +116,8 @@ const AdminRecords = () => {
         await adminApi.createRecord(formData);
         setSuccess('Record created successfully');
       }
+
+      fetchRecordsFirst();
       
       setShowForm(false);
       setSelectedRecord(null);
@@ -137,7 +139,7 @@ const AdminRecords = () => {
     try {
       await adminApi.deleteRecord(id);
       setSuccess('Record deleted successfully');
-      fetchRecords(pagination.page, searchTerm);
+      fetchRecordsFirst();
       
       // Clear selected record if it was deleted
       if (selectedRecord?._id === id) {
@@ -182,6 +184,8 @@ const AdminRecords = () => {
       // Refresh selected record
       const response = await adminApi.getRecordById(selectedRecord._id);
       setSelectedRecord(response.record);
+
+      fetchRecordsFirst();
       
       setTimeout(() => setSuccess(''), 3000);
     } catch (error) {
@@ -201,6 +205,8 @@ const AdminRecords = () => {
       // Refresh selected record
       const response = await adminApi.getRecordById(recordId);
       setSelectedRecord(response.record);
+
+      fetchRecordsFirst();
       
       setTimeout(() => setSuccess(''), 3000);
     } catch (error) {
@@ -216,7 +222,7 @@ const AdminRecords = () => {
       service: history.service,
       refNo: history.refNo,
       date: new Date(history.date).toISOString().split('T')[0],
-      followUp: history.followUp || '',
+      followUp: history.followUp ? new Date(history.followUp).toISOString().split('T')[0] : '',
       remark: history.remark || ''
     });
     setShowHistoryForm(true);
@@ -455,7 +461,7 @@ const AdminRecords = () => {
                           </div>
                           {history.followUp && (
                             <div className="col-span-2 text-gray-600">
-                              <span className="font-medium">Follow Up:</span> {history.followUp}
+                              <span className="font-medium">Follow Up:</span> {format(new Date(history.followUp), 'dd/MM/yyyy')}
                             </div>
                           )}
                           {history.remark && (
@@ -582,6 +588,7 @@ const AdminRecords = () => {
                     onChange={(e) => setHistoryData({ ...historyData, service: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
+                    placeholder='Enter Service Name'
                   />
                 </div>
 
@@ -595,6 +602,7 @@ const AdminRecords = () => {
                     onChange={(e) => setHistoryData({ ...historyData, refNo: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
+                    placeholder='Enter Reference Number'
                   />
                 </div>
 
@@ -613,10 +621,10 @@ const AdminRecords = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Follow Up
+                    Follow Up Date
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     value={historyData.followUp}
                     onChange={(e) => setHistoryData({ ...historyData, followUp: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -632,6 +640,7 @@ const AdminRecords = () => {
                     onChange={(e) => setHistoryData({ ...historyData, remark: e.target.value })}
                     rows="3"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder='Enter Remarks here...'
                   />
                 </div>
               </div>
